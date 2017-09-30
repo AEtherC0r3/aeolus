@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @data_point.type
+%p
+  %b Value:
+  = @data_point.value
+%p
+  %b Room:
+  = @data_point.room
+%p
+  %b Node:
+  = @data_point.node
+
+= link_to 'Edit', edit_data_point_path(@data_point)
+\|
+= link_to 'Back', data_points_path

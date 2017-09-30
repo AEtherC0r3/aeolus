@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930095919) do
+ActiveRecord::Schema.define(version: 20170930100052) do
+
+  create_table "data_points", force: :cascade do |t|
+    t.integer "type"
+    t.float "value"
+    t.integer "room_id"
+    t.integer "node_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["node_id"], name: "index_data_points_on_node_id"
+    t.index ["room_id"], name: "index_data_points_on_room_id"
+  end
 
   create_table "nodes", force: :cascade do |t|
     t.integer "capabilities"
