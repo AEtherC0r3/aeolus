@@ -26,11 +26,12 @@ class ClimateControlUnitsController < ApplicationController
   # POST /climate_control_units.json
   def create
     @climate_control_unit = ClimateControlUnit.new(climate_control_unit_params)
+    @climate_control_unit.room = @room
 
     respond_to do |format|
       if @climate_control_unit.save
-        format.html { redirect_to @climate_control_unit, notice: 'Climate control unit was successfully created.' }
-        format.json { render :show, status: :created, location: @climate_control_unit }
+        format.html { redirect_to [@room, @climate_control_unit], notice: 'Climate control unit was successfully created.' }
+        format.json { render :show, status: :created, location: [@room, @climate_control_unit] }
       else
         format.html { render :new }
         format.json { render json: @climate_control_unit.errors, status: :unprocessable_entity }
@@ -43,8 +44,8 @@ class ClimateControlUnitsController < ApplicationController
   def update
     respond_to do |format|
       if @climate_control_unit.update(climate_control_unit_params)
-        format.html { redirect_to @climate_control_unit, notice: 'Climate control unit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @climate_control_unit }
+        format.html { redirect_to [@room, @climate_control_unit], notice: 'Climate control unit was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@room, @climate_control_unit] }
       else
         format.html { render :edit }
         format.json { render json: @climate_control_unit.errors, status: :unprocessable_entity }
@@ -74,6 +75,6 @@ class ClimateControlUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def climate_control_unit_params
-      params.require(:climate_control_unit).permit(:name, :kind, :room_id, :slot_id)
+      params.require(:climate_control_unit).permit(:name, :kind, :slot_id)
     end
 end

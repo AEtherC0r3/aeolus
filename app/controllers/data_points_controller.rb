@@ -29,8 +29,8 @@ class DataPointsController < ApplicationController
 
     respond_to do |format|
       if @data_point.save
-        format.html { redirect_to @data_point, notice: 'Data point was successfully created.' }
-        format.json { render :show, status: :created, location: @data_point }
+        format.html { redirect_to [@data_point.room, @data_point], notice: 'Data point was successfully created.' }
+        format.json { render :show, status: :created, location: [@data_point.room, @data_point] }
       else
         format.html { render :index }
         format.json { render json: @data_point.errors, status: :unprocessable_entity }

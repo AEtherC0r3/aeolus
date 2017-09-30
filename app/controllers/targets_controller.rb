@@ -26,11 +26,12 @@ class TargetsController < ApplicationController
   # POST /targets.json
   def create
     @target = Target.new(target_params)
+    @target.room = @room
 
     respond_to do |format|
       if @target.save
-        format.html { redirect_to @target, notice: 'Target was successfully created.' }
-        format.json { render :show, status: :created, location: @target }
+        format.html { redirect_to [@room, @target], notice: 'Target was successfully created.' }
+        format.json { render :show, status: :created, location: [@room, @target] }
       else
         format.html { render :new }
         format.json { render json: @target.errors, status: :unprocessable_entity }
@@ -43,8 +44,8 @@ class TargetsController < ApplicationController
   def update
     respond_to do |format|
       if @target.update(target_params)
-        format.html { redirect_to @target, notice: 'Target was successfully updated.' }
-        format.json { render :show, status: :ok, location: @target }
+        format.html { redirect_to [@room, @target], notice: 'Target was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@room, @target] }
       else
         format.html { render :edit }
         format.json { render json: @target.errors, status: :unprocessable_entity }
@@ -74,6 +75,6 @@ class TargetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def target_params
-      params.require(:target).permit(:kind, :value, :room_id)
+      params.require(:target).permit(:kind, :value)
     end
 end

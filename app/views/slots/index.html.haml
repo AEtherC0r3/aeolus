@@ -16,10 +16,10 @@
         %td= slot.identifier
         %td= slot.node
         %td= slot.climate_control_unit
-        %td= link_to 'Show', slot
-        %td= link_to 'Edit', edit_room_node_slot_path(slot)
-        %td= link_to 'Destroy', slot, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Show', slot, class: 'btn btn-primary'
+        %td= link_to 'Edit', edit_room_node_slot_path(slot), class: 'btn btn-warning'
+        %td= link_to 'Destroy', slot, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
-= link_to 'New Slot', new_room_node_slot_path
+= link_to 'New Slot', new_room_node_slot_path, class: 'btn btn-success'

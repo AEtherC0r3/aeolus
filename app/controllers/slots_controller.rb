@@ -30,8 +30,8 @@ class SlotsController < ApplicationController
 
     respond_to do |format|
       if @slot.save
-        format.html { redirect_to @slot, notice: 'Slot was successfully created.' }
-        format.json { render :show, status: :created, location: @slot }
+        format.html { redirect_to [@room, @node, @slot], notice: 'Slot was successfully created.' }
+        format.json { render :show, status: :created, location: [@room, @node, @slot] }
       else
         format.html { render :new }
         format.json { render json: @slot.errors, status: :unprocessable_entity }
@@ -44,8 +44,8 @@ class SlotsController < ApplicationController
   def update
     respond_to do |format|
       if @slot.update(slot_params)
-        format.html { redirect_to @slot, notice: 'Slot was successfully updated.' }
-        format.json { render :show, status: :ok, location: @slot }
+        format.html { redirect_to [@room, @node, @slot], notice: 'Slot was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@room, @node, @slot] }
       else
         format.html { render :edit }
         format.json { render json: @slot.errors, status: :unprocessable_entity }

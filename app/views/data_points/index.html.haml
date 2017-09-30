@@ -3,7 +3,7 @@
 %table.table
   %thead
     %tr
-      %th Type
+      %th Kind
       %th Value
       %th Room
       %th Node
@@ -12,11 +12,11 @@
   %tbody
     - @data_points.each do |data_point|
       %tr
-        %td= data_point.type
+        %td= data_point.kind
         %td= data_point.value
         %td= data_point.room
         %td= data_point.node
         %td
           .btn-group
             = link_to 'Show', data_point, class: 'btn btn-primary'
-            = link_to 'Destroy', data_point, method: :delete, data: { confirm: 'Are you sure?' }
+            = link_to 'Destroy', data_point, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

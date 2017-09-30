@@ -16,13 +16,13 @@
         %td
           - temperature_reading = room.data_points.temperature.last
           - if temperature_reading
-            = "#{temperature_reading.value} @ temperature_reading.created_at"
+            = "#{temperature_reading.value} @ #{temperature_reading.created_at}"
           - else
             = 'N/A'
         %td
           - humidity_reading = room.data_points.humidity.last
           - if humidity_reading
-            = "#{humidity_reading.value} @ humidity_reading.created_at"
+            = "#{humidity_reading.value} @ #{humidity_reading.created_at}"
           - else
             = 'N/A'
         %td

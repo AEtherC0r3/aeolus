@@ -16,10 +16,10 @@
         %td= target.type
         %td= target.value
         %td= target.room
-        %td= link_to 'Show', target
-        %td= link_to 'Edit', edit_room_target_path(target)
-        %td= link_to 'Destroy', target, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Show', target, class: 'btn btn-primary'
+        %td= link_to 'Edit', edit_room_target_path(target), class: 'btn btn-warning'
+        %td= link_to 'Destroy', target, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
-= link_to 'New Target', new_room_target_path
+= link_to 'New Target', new_room_target_path, class: 'btn btn-success'
