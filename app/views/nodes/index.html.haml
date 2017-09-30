@@ -16,9 +16,9 @@
         %td= node.capabilities
         %td= node.api_key
         %td= node.room
-        %td= link_to 'Show', node
-        %td= link_to 'Edit', edit_room_node_path(node)
-        %td= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Show', node, class: 'btn btn-primary'
+        %td= link_to 'Edit', edit_room_node_path(node), class: 'btn btn-warning'
+        %td= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 

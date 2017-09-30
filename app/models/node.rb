@@ -7,4 +7,5 @@ class Node < ApplicationRecord
   validates :api_key,
             presence: :true,
             uniqueness: :true
+  validates :capabilities, presence: :true
 end

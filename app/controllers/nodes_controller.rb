@@ -26,6 +26,7 @@ class NodesController < ApplicationController
   # POST /nodes.json
   def create
     @node = Node.new(node_params)
+    @node.room = @room
 
     respond_to do |format|
       if @node.save
