@@ -1,21 +1,44 @@
 %h1 Listing rooms
 
-%table
+%table.table
   %thead
     %tr
       %th Name
-      %th
-      %th
-      %th
+      %th Current temperature
+      %th Current humidity
+      %th VOCs
+      %th Actions
 
   %tbody
     - @rooms.each do |room|
       %tr
-        %td= room.name
-        %td= link_to 'Show', room
-        %td= link_to 'Edit', edit_room_path(room)
-        %td= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= room.try(:name)
+        %td
+          - temperature_reading = room.data_points.temperature.last
+          - if temperature_reading
+            = "#{temperature_reading.value} @ temperature_reading.created_at"
+          - else
+            = 'N/A'
+        %td
+          - humidity_reading = room.data_points.humidity.last
+          - if humidity_reading
+            = "#{humidity_reading.value} @ humidity_reading.created_at"
+          - else
+            = 'N/A'
+        %td
+          - voc_reading = room.data_points.voc.last
+          - if voc_reading.try(:value) == 0
+            = "Yes @ voc_reading.created_at"
+          - elsif voc_reading.try(:value) == 1
+            = "No @ voc_reading.created_at"
+          - else
+            = 'N/A'
+        %td
+          .btn-group
+            = link_to 'Show', room, class: 'btn btn-primary'
+            = link_to 'Edit', edit_room_path(room), class: 'btn btn-warning'
+            = link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
-= link_to 'New Room', new_room_path
+= link_to 'New Room', new_room_path, class: 'btn btn-success'
