@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930100052) do
+ActiveRecord::Schema.define(version: 20170930100801) do
+
+  create_table "climate_control_units", force: :cascade do |t|
+    t.string "name"
+    t.integer "type"
+    t.integer "room_id"
+    t.integer "slot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_climate_control_units_on_room_id"
+    t.index ["slot_id"], name: "index_climate_control_units_on_slot_id"
+  end
 
   create_table "data_points", force: :cascade do |t|
     t.integer "type"
@@ -36,6 +47,16 @@ ActiveRecord::Schema.define(version: 20170930100052) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.string "identifier"
+    t.integer "node_id"
+    t.integer "climate_control_unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["climate_control_unit_id"], name: "index_slots_on_climate_control_unit_id"
+    t.index ["node_id"], name: "index_slots_on_node_id"
   end
 
   create_table "targets", force: :cascade do |t|

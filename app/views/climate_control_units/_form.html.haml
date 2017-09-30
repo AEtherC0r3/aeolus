@@ -1,0 +1,22 @@
+= form_for @climate_control_unit do |f|
+  - if @climate_control_unit.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@climate_control_unit.errors.count, "error")} prohibited this climate_control_unit from being saved:"
+      %ul
+        - @climate_control_unit.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :type
+    = f.number_field :type
+  .field
+    = f.label :room
+    = f.text_field :room
+  .field
+    = f.label :slot
+    = f.text_field :slot
+  .actions
+    = f.submit 'Save'

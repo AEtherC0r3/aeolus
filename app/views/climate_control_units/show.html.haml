@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @climate_control_unit.name
+%p
+  %b Type:
+  = @climate_control_unit.type
+%p
+  %b Room:
+  = @climate_control_unit.room
+%p
+  %b Slot:
+  = @climate_control_unit.slot
+
+= link_to 'Edit', edit_climate_control_unit_path(@climate_control_unit)
+\|
+= link_to 'Back', climate_control_units_path

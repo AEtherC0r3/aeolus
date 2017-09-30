@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Identifier:
+  = @slot.identifier
+%p
+  %b Node:
+  = @slot.node
+%p
+  %b Climate control unit:
+  = @slot.climate_control_unit
+
+= link_to 'Edit', edit_slot_path(@slot)
+\|
+= link_to 'Back', slots_path

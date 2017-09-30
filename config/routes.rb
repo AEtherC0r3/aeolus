@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :climate_control_units
+  resources :slots
   resources :data_points
   resources :nodes
   resources :targets
