@@ -74,6 +74,6 @@ class TargetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def target_params
-      params.require(:target).permit(:type, :value, :room_id)
+      params.require(:target).permit(:kind, :value, :room_id)
     end
 end

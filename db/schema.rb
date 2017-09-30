@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930100801) do
+ActiveRecord::Schema.define(version: 20170930164025) do
 
   create_table "climate_control_units", force: :cascade do |t|
     t.string "name"
-    t.integer "type"
+    t.integer "kind"
     t.integer "room_id"
     t.integer "slot_id"
     t.datetime "created_at", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170930100801) do
   end
 
   create_table "data_points", force: :cascade do |t|
-    t.integer "type"
+    t.integer "kind"
     t.float "value"
     t.integer "room_id"
     t.integer "node_id"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20170930100801) do
   end
 
   create_table "targets", force: :cascade do |t|
-    t.integer "type"
+    t.integer "kind"
     t.float "value"
     t.integer "room_id"
     t.datetime "created_at", null: false
