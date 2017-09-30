@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @target.type
+%p
+  %b Value:
+  = @target.value
+%p
+  %b Room:
+  = @target.room
+
+= link_to 'Edit', edit_target_path(@target)
+\|
+= link_to 'Back', targets_path
