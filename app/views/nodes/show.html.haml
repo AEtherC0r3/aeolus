@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Capabilities:
+  = @node.capabilities
+%p
+  %b Api key:
+  = @node.api_key
+%p
+  %b Room:
+  = @node.room
+
+= link_to 'Edit', edit_node_path(@node)
+\|
+= link_to 'Back', nodes_path
