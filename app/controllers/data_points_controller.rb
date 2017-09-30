@@ -1,6 +1,8 @@
 class DataPointsController < ApplicationController
-  before_action :set_room
+  before_action :set_room, except: [:create]
   before_action :set_data_point, only: [:show, :destroy]
+  before_action :set_node, only: :create
+  skip_before_action :verify_authenticity_token, only: :create
 
   # GET /data_points
   # GET /data_points.json
@@ -16,14 +18,21 @@ class DataPointsController < ApplicationController
   # POST /data_points
   # POST /data_points.json
   def create
+    # If the node isn't loaded <=> the api key is invalid, return HTTP 403 Forbidden
+    unless @node
+      render layout: false, status: 403
+    end
+
     @data_point = DataPoint.new(data_point_params)
+    @data_point.node = @node
+    @data_point.room = @node.room
 
     respond_to do |format|
       if @data_point.save
         format.html { redirect_to @data_point, notice: 'Data point was successfully created.' }
         format.json { render :show, status: :created, location: @data_point }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @data_point.errors, status: :unprocessable_entity }
       end
     end
@@ -49,8 +58,13 @@ class DataPointsController < ApplicationController
       @data_point = DataPoint.find(params[:id])
     end
 
+    # Load the node using the api_key
+    def set_node
+      @node = Node.find_by(api_key: params[:api_key])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def data_point_params
-      params.require(:data_point).permit(:type, :value, :room_id, :node_id)
+      params.require(:data_point).permit(:type, :value)
     end
 end
