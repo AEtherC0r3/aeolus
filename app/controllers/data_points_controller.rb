@@ -1,6 +1,6 @@
 class DataPointsController < ApplicationController
   before_action :set_room
-  before_action :set_data_point, only: [:show, :edit, :update, :destroy]
+  before_action :set_data_point, only: [:show, :destroy]
 
   # GET /data_points
   # GET /data_points.json
@@ -11,15 +11,6 @@ class DataPointsController < ApplicationController
   # GET /data_points/1
   # GET /data_points/1.json
   def show
-  end
-
-  # GET /data_points/new
-  def new
-    @data_point = DataPoint.new
-  end
-
-  # GET /data_points/1/edit
-  def edit
   end
 
   # POST /data_points
@@ -33,20 +24,6 @@ class DataPointsController < ApplicationController
         format.json { render :show, status: :created, location: @data_point }
       else
         format.html { render :new }
-        format.json { render json: @data_point.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /data_points/1
-  # PATCH/PUT /data_points/1.json
-  def update
-    respond_to do |format|
-      if @data_point.update(data_point_params)
-        format.html { redirect_to @data_point, notice: 'Data point was successfully updated.' }
-        format.json { render :show, status: :ok, location: @data_point }
-      else
-        format.html { render :edit }
         format.json { render json: @data_point.errors, status: :unprocessable_entity }
       end
     end

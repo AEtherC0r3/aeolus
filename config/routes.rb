@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :rooms do
     resources :targets
-    resources :data_points
+    resources :data_points, except: [:new, :edit, :update]
     resources :nodes do
       resources :slots
     end

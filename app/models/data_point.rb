@@ -1,5 +1,5 @@
 class DataPoint < ApplicationRecord
-  belongs_to :room
+  belongs_to :room, dependent: :destroy
   belongs_to :node
 
   enum type: [:temperature, :humidity, :voc]
@@ -11,6 +11,7 @@ class DataPoint < ApplicationRecord
             inclusion: {
               in: DataPoint.types.keys
             }
+  validates :value, presence: true
 
   scope :temperature, -> { where(type: DataPoint.types[:temperature]) }
   scope :humidity, -> { where(type: DataPoint.types[:humidity]) }

@@ -1,15 +1,13 @@
 %h1 Listing data_points
 
-%table
+%table.table
   %thead
     %tr
       %th Type
       %th Value
       %th Room
       %th Node
-      %th
-      %th
-      %th
+      %th Actions
 
   %tbody
     - @data_points.each do |data_point|
@@ -18,10 +16,7 @@
         %td= data_point.value
         %td= data_point.room
         %td= data_point.node
-        %td= link_to 'Show', data_point
-        %td= link_to 'Edit', edit_room_data_point_path(data_point)
-        %td= link_to 'Destroy', data_point, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Data point', new_room_data_point_path
+        %td
+          .btn-group
+            = link_to 'Show', data_point, class: 'btn btn-primary'
+            = link_to 'Destroy', data_point, method: :delete, data: { confirm: 'Are you sure?' }
