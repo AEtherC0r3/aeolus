@@ -17,9 +17,9 @@
         %td= target.value
         %td= target.room
         %td= link_to 'Show', target
-        %td= link_to 'Edit', edit_target_path(target)
+        %td= link_to 'Edit', edit_room_target_path(target)
         %td= link_to 'Destroy', target, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Target', new_target_path
+= link_to 'New Target', new_room_target_path

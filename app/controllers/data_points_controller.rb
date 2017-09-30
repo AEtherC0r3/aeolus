@@ -1,4 +1,5 @@
 class DataPointsController < ApplicationController
+  before_action :set_room
   before_action :set_data_point, only: [:show, :edit, :update, :destroy]
 
   # GET /data_points
@@ -62,6 +63,10 @@ class DataPointsController < ApplicationController
   end
 
   private
+    def set_room
+      @room = Room.find(params[:room_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_data_point
       @data_point = DataPoint.find(params[:id])

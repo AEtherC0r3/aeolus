@@ -7,4 +7,27 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{ type: 'button', 'data-toggle' => 'collapse', 'data-target' => '.navbar-collapse' }
+            %span.sr-only Toggle menu
+            %i.fa.fa-bars
+          = link_to 'Aeolus', root_path, { class: 'navbar-brand' }
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            - if @room.try(:id)
+              %li
+                = link_to 'Targets', room_targets_path(@room)
+              %li
+                = link_to 'Data points', room_data_points_path(@room)
+              %li
+                = link_to 'Nodes', room_nodes_path(@room)
+                %ul
+                  - if @node.try(:id)
+                    %li
+                      = link_to 'Slots', room_nodes_slots_path(@room, @node)
+              %li
+                = link_to 'Climate control units', room_climate_control_units_path(@room)
+    .container
+      = yield

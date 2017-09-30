@@ -1,4 +1,4 @@
-= form_for @node do |f|
+= form_for [@room, @node] do |f|
   - if @node.errors.any?
     #error_explanation
       %h2= "#{pluralize(@node.errors.count, "error")} prohibited this node from being saved:"

@@ -1,4 +1,5 @@
 class TargetsController < ApplicationController
+  before_action :set_room
   before_action :set_target, only: [:show, :edit, :update, :destroy]
 
   # GET /targets
@@ -62,6 +63,10 @@ class TargetsController < ApplicationController
   end
 
   private
+    def set_room
+      @room = Room.find(params[:room_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_target
       @target = Target.find(params[:id])

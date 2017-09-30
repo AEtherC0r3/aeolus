@@ -19,9 +19,9 @@
         %td= climate_control_unit.room
         %td= climate_control_unit.slot
         %td= link_to 'Show', climate_control_unit
-        %td= link_to 'Edit', edit_climate_control_unit_path(climate_control_unit)
+        %td= link_to 'Edit', edit_room_climate_control_unit_path(climate_control_unit)
         %td= link_to 'Destroy', climate_control_unit, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Climate control unit', new_climate_control_unit_path
+= link_to 'New Climate control unit', new_room_climate_control_unit_path

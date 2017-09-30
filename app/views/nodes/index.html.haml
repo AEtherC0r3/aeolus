@@ -17,9 +17,9 @@
         %td= node.api_key
         %td= node.room
         %td= link_to 'Show', node
-        %td= link_to 'Edit', edit_node_path(node)
+        %td= link_to 'Edit', edit_room_node_path(node)
         %td= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Node', new_node_path
+= link_to 'New Node', new_room_node_path

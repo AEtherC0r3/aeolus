@@ -1,4 +1,4 @@
-= form_for @target do |f|
+= form_for [@room, @target] do |f|
   - if @target.errors.any?
     #error_explanation
       %h2= "#{pluralize(@target.errors.count, "error")} prohibited this target from being saved:"

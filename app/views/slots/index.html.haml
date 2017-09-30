@@ -17,9 +17,9 @@
         %td= slot.node
         %td= slot.climate_control_unit
         %td= link_to 'Show', slot
-        %td= link_to 'Edit', edit_slot_path(slot)
+        %td= link_to 'Edit', edit_room_node_slot_path(slot)
         %td= link_to 'Destroy', slot, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Slot', new_slot_path
+= link_to 'New Slot', new_room_node_slot_path

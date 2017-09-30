@@ -1,4 +1,5 @@
 class ClimateControlUnitsController < ApplicationController
+  before_action :set_room
   before_action :set_climate_control_unit, only: [:show, :edit, :update, :destroy]
 
   # GET /climate_control_units
@@ -62,6 +63,10 @@ class ClimateControlUnitsController < ApplicationController
   end
 
   private
+    def set_room
+      @room = Room.find(params[:room_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_climate_control_unit
       @climate_control_unit = ClimateControlUnit.find(params[:id])

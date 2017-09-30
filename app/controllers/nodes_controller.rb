@@ -1,4 +1,5 @@
 class NodesController < ApplicationController
+  before_action :set_room
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
   # GET /nodes
@@ -62,6 +63,10 @@ class NodesController < ApplicationController
   end
 
   private
+    def set_room
+      @room = Room.find(params[:room_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_node
       @node = Node.find(params[:id])

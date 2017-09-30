@@ -19,9 +19,9 @@
         %td= data_point.room
         %td= data_point.node
         %td= link_to 'Show', data_point
-        %td= link_to 'Edit', edit_data_point_path(data_point)
+        %td= link_to 'Edit', edit_room_data_point_path(data_point)
         %td= link_to 'Destroy', data_point, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Data point', new_data_point_path
+= link_to 'New Data point', new_room_data_point_path

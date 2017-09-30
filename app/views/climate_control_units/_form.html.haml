@@ -1,4 +1,4 @@
-= form_for @climate_control_unit do |f|
+= form_for [@room, @climate_control_unit] do |f|
   - if @climate_control_unit.errors.any?
     #error_explanation
       %h2= "#{pluralize(@climate_control_unit.errors.count, "error")} prohibited this climate_control_unit from being saved:"

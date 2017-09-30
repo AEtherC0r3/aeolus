@@ -1,4 +1,6 @@
 class SlotsController < ApplicationController
+  before_action :set_room
+  before_action :set_target
   before_action :set_slot, only: [:show, :edit, :update, :destroy]
 
   # GET /slots
@@ -62,6 +64,14 @@ class SlotsController < ApplicationController
   end
 
   private
+    def set_room
+      @room = Room.find(params[:room_id])
+    end
+
+    def set_target
+      @target = Target.find(params[:target_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_slot
       @slot = Slot.find(params[:id])
