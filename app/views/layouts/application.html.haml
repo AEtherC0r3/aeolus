@@ -26,7 +26,7 @@
                 %ul
                   - if @node.try(:id)
                     %li
-                      = link_to 'Slots', room_nodes_slots_path(@room, @node)
+                      = link_to 'Slots', room_node_slots_path(@room, @node)
               %li
                 = link_to 'Climate control units', room_climate_control_units_path(@room)
     .container

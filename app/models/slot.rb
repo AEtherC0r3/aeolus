@@ -16,7 +16,7 @@ class Slot < ApplicationRecord
   private
 
   def kind_in_node_capabilities
-    return if node.decode_capabilities.includes kind
+    return if node.decode_capabilities.include? kind
     errors.add(:kind, "must be in #{node.decode_capabilities}")
   end
 end

@@ -1,6 +1,6 @@
 class SlotsController < ApplicationController
   before_action :set_room
-  before_action :set_target
+  before_action :set_node
   before_action :set_slot, only: [:show, :edit, :update, :destroy]
 
   # GET /slots
@@ -27,6 +27,7 @@ class SlotsController < ApplicationController
   # POST /slots.json
   def create
     @slot = Slot.new(slot_params)
+    @slot.node = @node
 
     respond_to do |format|
       if @slot.save
@@ -68,8 +69,8 @@ class SlotsController < ApplicationController
       @room = Room.find(params[:room_id])
     end
 
-    def set_target
-      @target = Target.find(params[:target_id])
+    def set_node
+      @node = Node.find(params[:node_id])
     end
 
     # Use callbacks to share common setup or constraints between actions.

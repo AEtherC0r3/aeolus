@@ -1,5 +1,5 @@
 class NodesController < ApplicationController
-  before_action :set_room
+  before_action :set_room, except: :get_states
   before_action :set_node, only: [:show, :edit, :update, :destroy, :get_states]
 
   # GET /nodes

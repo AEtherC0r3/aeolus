@@ -4,7 +4,7 @@ class DataPoint < ApplicationRecord
 
   enum kind: [:temperature, :humidity, :voc]
 
-  validates :room, presence: true, unless: outside_node?
+  validates :room, presence: true, unless: :outside_node?
   validates :node, presence: true
   validates :kind,
             presence: true,
@@ -21,7 +21,7 @@ class DataPoint < ApplicationRecord
   end
 
   def kind_in_node_capabilities
-    return unless node.decode_capabilities.includes kind
+    return unless node.decode_capabilities.include? kind
     errors.add(:kind, "must be in #{node.decode_capabilities}")
   end
 end
