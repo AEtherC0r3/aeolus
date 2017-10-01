@@ -1,6 +1,6 @@
 class ClimateControlUnit < ApplicationRecord
   belongs_to :room
-  belongs_to :slot
+  belongs_to :slot, optional: true
 
   enum kind: [:outside, :ac, :heater, :cooler, :dehumidifier, :humidifier]
 

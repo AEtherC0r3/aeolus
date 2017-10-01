@@ -88,6 +88,6 @@ class NodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def node_params
-      params.require(:node).permit(:capabilities, :api_key)
+      params.require(:node).permit(:capabilities, :api_key, :outside)
     end
 end

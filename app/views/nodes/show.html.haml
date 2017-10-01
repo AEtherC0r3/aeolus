@@ -9,7 +9,9 @@
 %p
   %b Room:
   = @node.room
-
-= link_to 'Edit', edit_room_node_path(@node), class: 'btn btn-warning'
+%p
+  %b Outside:
+  = @node.outside?
+= link_to 'Edit', edit_room_node_path(@room, @node), class: 'btn btn-warning'
 \|
 = link_to 'Back', room_nodes_path(@room), class: 'btn btn-primary'

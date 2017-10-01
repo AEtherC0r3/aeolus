@@ -1,8 +1,8 @@
 %p#notice= notice
 
 %p
-  %b Type:
-  = @target.type
+  %b Kind:
+  = @target.kind
 %p
   %b Value:
   = @target.value
@@ -10,6 +10,6 @@
   %b Room:
   = @target.room
 
-= link_to 'Edit', edit_room_target_path(@roon, @target), class: 'btn btn-warning'
+= link_to 'Edit', edit_room_target_path(@room, @target), class: 'btn btn-warning'
 \|
 = link_to 'Back', room_targets_path(@room), class: 'btn btn-primary'

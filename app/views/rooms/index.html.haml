@@ -27,10 +27,11 @@
             = 'N/A'
         %td
           - voc_reading = room.data_points.voc.last
-          - if voc_reading.try(:value) == 0
-            = "Yes @ voc_reading.created_at"
-          - elsif voc_reading.try(:value) == 1
-            = "No @ voc_reading.created_at"
+          //  = "#{voc_reading.value} @ #{voc_reading.created_at}"
+          - if voc_reading.try(:value) > 512
+            = "Yes @ #{voc_reading.created_at}"
+          - elsif voc_reading.try(:value) > 0
+            = "No @ #{voc_reading.created_at}t"
           - else
             = 'N/A'
         %td

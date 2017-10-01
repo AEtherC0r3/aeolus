@@ -84,11 +84,11 @@ class SlotsController < ApplicationController
     end
 
     def set_climate_control_unit
-      @climate_control_unit = ClimateControlUnit.find(params[:climate_control_unit_id])
+      @climate_control_unit = ClimateControlUnit.find(params[:slot][:climate_control_unit_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def slot_params
-      params.require(:slot).permit(:identifier, :climate_control_unit_id)
+      params.require(:slot).permit(:kind, :climate_control_unit_id)
     end
 end

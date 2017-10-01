@@ -3,7 +3,7 @@
 %table.table
   %thead
     %tr
-      %th Identifier
+      %th Kind
       %th Node
       %th Climate control unit
       %th Actions
@@ -11,7 +11,7 @@
   %tbody
     - @slots.each do |slot|
       %tr
-        %td= slot.identifier
+        %td= slot.kind
         %td= slot.node
         %td= slot.climate_control_unit
         %td

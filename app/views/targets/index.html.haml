@@ -3,7 +3,7 @@
 %table.table
   %thead
     %tr
-      %th Type
+      %th Kind
       %th Value
       %th Room
       %th Actions
@@ -11,7 +11,7 @@
   %tbody
     - @targets.each do |target|
       %tr
-        %td= target.type
+        %td= target.kind
         %td= target.value
         %td= target.room
         %td
