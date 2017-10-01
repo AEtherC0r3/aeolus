@@ -12,4 +12,5 @@ class DataPoint < ApplicationRecord
               in: DataPoint.kinds.keys
             }
   validates :value, presence: true
+  validates_inclusion_of :kind, in: node.decode_capabilities
 end
