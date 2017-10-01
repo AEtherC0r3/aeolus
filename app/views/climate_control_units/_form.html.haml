@@ -12,8 +12,5 @@
   .field
     = f.label :kind
     = f.select :kind, ClimateControlUnit.kinds.keys
-  .field
-    = f.label :slot
-    = f.text_field :slot
   .actions
     = f.submit 'Save', class: 'btn btn-success'

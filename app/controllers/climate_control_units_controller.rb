@@ -75,6 +75,6 @@ class ClimateControlUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def climate_control_unit_params
-      params.require(:climate_control_unit).permit(:name, :kind, :slot_id)
+      params.require(:climate_control_unit).permit(:name, :kind)
     end
 end

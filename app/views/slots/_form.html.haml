@@ -11,6 +11,6 @@
     = f.select :kind, Slot.kinds.keys
   .field
     = f.label :climate_control_unit
-    = f.text_field :climate_control_unit
+    = f.collection_select(:climate_control_unit, @room.climate_control_units, :id, :name)
   .actions
     = f.submit 'Save', class: 'btn btn-success'

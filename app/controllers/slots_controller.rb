@@ -2,6 +2,7 @@ class SlotsController < ApplicationController
   before_action :set_room
   before_action :set_node
   before_action :set_slot, only: [:show, :edit, :update, :destroy]
+  before_action :set_climate_control_unit, only: [:create, :update]
 
   # GET /slots
   # GET /slots.json
@@ -28,9 +29,11 @@ class SlotsController < ApplicationController
   def create
     @slot = Slot.new(slot_params)
     @slot.node = @node
+    @climate_control_unit.slot = @slot
 
     respond_to do |format|
       if @slot.save
+        @climate_control_unit.save!
         format.html { redirect_to [@room, @node, @slot], notice: 'Slot was successfully created.' }
         format.json { render :show, status: :created, location: [@room, @node, @slot] }
       else
@@ -45,6 +48,8 @@ class SlotsController < ApplicationController
   def update
     respond_to do |format|
       if @slot.update(slot_params)
+        @climate_control_unit.slot = @slot
+        @climate_control_unit.save!
         format.html { redirect_to [@room, @node, @slot], notice: 'Slot was successfully updated.' }
         format.json { render :show, status: :ok, location: [@room, @node, @slot] }
       else
@@ -78,8 +83,12 @@ class SlotsController < ApplicationController
       @slot = Slot.find(params[:id])
     end
 
+    def set_climate_control_unit
+      @climate_control_unit = ClimateControlUnit.find(params[:climate_control_unit_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def slot_params
-      params.require(:slot).permit(:identifier, :node_id, :climate_control_unit_id)
+      params.require(:slot).permit(:identifier, :climate_control_unit_id)
     end
 end
