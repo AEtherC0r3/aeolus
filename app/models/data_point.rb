@@ -12,5 +12,12 @@ class DataPoint < ApplicationRecord
               in: DataPoint.kinds.keys
             }
   validates :value, presence: true
-  validates_inclusion_of :kind, in: node.decode_capabilities
+  validate :kind_in_node_capabilities
+
+  private
+
+  def kind_in_node_capabilities
+    return unless node.decode_capabilities.includes kind
+    errors.add(:kind, "must be in #{node.decode_capabilities}")
+  end
 end

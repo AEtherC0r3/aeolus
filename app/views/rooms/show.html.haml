@@ -6,6 +6,12 @@
   %b Name:
   = @room.name
 
+%p
+  %b Enabled:
+  = @room.enabled
+
+= link_to 'Toggle enabled', toggle_enabled_room_path, method: :patch, class: 'btn'
+
 = link_to 'Edit', edit_room_path(@room), class: 'btn btn-warning'
 \|
 = link_to 'Back', rooms_path, class: 'btn btn-primary'

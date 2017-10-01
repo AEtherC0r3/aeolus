@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :rooms do
+    member do
+      patch :toggle_enabled
+    end
+
     resources :targets
     resources :data_points, only: [:index, :show, :destroy]
     resources :nodes do

@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :toggle_enabled]
 
   # GET /rooms
   # GET /rooms.json
@@ -59,6 +59,11 @@ class RoomsController < ApplicationController
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_enabled
+      @room.enabled = !@room.enabled
+      @room.save!
   end
 
   private

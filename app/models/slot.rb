@@ -11,5 +11,12 @@ class Slot < ApplicationRecord
             inclusion: {
               in: Slot.kinds.keys
             }
-  validates_inclusion_of :kind, in: node.decode_capabilities
+  validate :kind_in_node_capabilities
+
+  private
+
+  def kind_in_node_capabilities
+    return if node.decode_capabilities.includes kind
+    errors.add(:kind, "must be in #{node.decode_capabilities}")
+  end
 end
