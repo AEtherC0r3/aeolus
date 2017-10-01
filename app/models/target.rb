@@ -8,6 +8,9 @@ class Target < ApplicationRecord
             presence: true,
             inclusion: {
               in: Target.kinds.keys
+            },
+            uniqueness: {
+              scope: :room
             }
   validates :value, presence: true
   validates_inclusion_of :value, in: 15..35, if: :temperature?

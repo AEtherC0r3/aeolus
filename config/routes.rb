@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   # For API requests from the nodes
   resources :data_points, only: :create
+  get 'nodes/:api_key', to: 'nodes#get_states'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'rooms#index'
