@@ -10,6 +10,6 @@
   %b Room:
   = @target.room
 
-= link_to 'Edit', edit_room_target_path(@target), class: 'btn btn-warning'
+= link_to 'Edit', edit_room_target_path(@roon, @target), class: 'btn btn-warning'
 \|
-= link_to 'Back', room_targets_path, class: 'btn btn-primary'
+= link_to 'Back', room_targets_path(@room), class: 'btn btn-primary'

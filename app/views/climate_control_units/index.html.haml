@@ -1,15 +1,13 @@
 %h1 Listing climate_control_units
 
-%table
+%table.table
   %thead
     %tr
       %th Name
       %th Type
       %th Room
       %th Slot
-      %th
-      %th
-      %th
+      %th Actions
 
   %tbody
     - @climate_control_units.each do |climate_control_unit|
@@ -18,10 +16,10 @@
         %td= climate_control_unit.type
         %td= climate_control_unit.room
         %td= climate_control_unit.slot
-        %td= link_to 'Show', climate_control_unit, class: 'btn btn-primary'
-        %td= link_to 'Edit', edit_room_climate_control_unit_path(climate_control_unit), class: 'btn btn-warning'
-        %td= link_to 'Destroy', climate_control_unit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+        %td= link_to 'Show', room_climate_control_unit_path(@room, climate_control_unit), class: 'btn btn-primary'
+        %td= link_to 'Edit', edit_room_climate_control_unit_path(@room, climate_control_unit), class: 'btn btn-warning'
+        %td= link_to 'Destroy', room_climate_control_unit_path(@room, climate_control_unit), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
-= link_to 'New Climate control unit', new_room_climate_control_unit_path, class: 'btn btn-success'
+= link_to 'New Climate control unit', new_room_climate_control_unit_path(@room), class: 'btn btn-success'

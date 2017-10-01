@@ -1,14 +1,12 @@
 %h1 Listing slots
 
-%table
+%table.table
   %thead
     %tr
       %th Identifier
       %th Node
       %th Climate control unit
-      %th
-      %th
-      %th
+      %th Actions
 
   %tbody
     - @slots.each do |slot|
@@ -16,10 +14,12 @@
         %td= slot.identifier
         %td= slot.node
         %td= slot.climate_control_unit
-        %td= link_to 'Show', slot, class: 'btn btn-primary'
-        %td= link_to 'Edit', edit_room_node_slot_path(slot), class: 'btn btn-warning'
-        %td= link_to 'Destroy', slot, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+        %td
+          .btn-group
+            = link_to 'Show', room_node_slot_path(@room, @node, slot), class: 'btn btn-primary'
+            = link_to 'Edit', edit_room_node_slot_path(@room, @node, slot), class: 'btn btn-warning'
+            = link_to 'Destroy', room_node_slot_path(@room, @node, slot), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
-= link_to 'New Slot', new_room_node_slot_path, class: 'btn btn-success'
+= link_to 'New Slot', new_room_node_slot_path(@room, @node), class: 'btn btn-success'

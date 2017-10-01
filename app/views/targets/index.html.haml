@@ -1,14 +1,12 @@
 %h1 Listing targets
 
-%table
+%table.table
   %thead
     %tr
       %th Type
       %th Value
       %th Room
-      %th
-      %th
-      %th
+      %th Actions
 
   %tbody
     - @targets.each do |target|
@@ -16,10 +14,12 @@
         %td= target.type
         %td= target.value
         %td= target.room
-        %td= link_to 'Show', target, class: 'btn btn-primary'
-        %td= link_to 'Edit', edit_room_target_path(target), class: 'btn btn-warning'
-        %td= link_to 'Destroy', target, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+        %td
+          .btn-group
+            = link_to 'Show', room_target_path(@room, target), class: 'btn btn-primary'
+            = link_to 'Edit', edit_room_target_path(@room, target), class: 'btn btn-warning'
+            = link_to 'Destroy', room_target_path(@room, target), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
-= link_to 'New Target', new_room_target_path, class: 'btn btn-success'
+= link_to 'New Target', new_room_target_path(@room), class: 'btn btn-success'

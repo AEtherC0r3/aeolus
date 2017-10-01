@@ -10,8 +10,8 @@
     = f.label :name
     = f.text_field :name
   .field
-    = f.label :type
-    = f.number_field :type
+    = f.label :kind
+    = f.select :kind, ClimateControlUnit.kinds.keys
   .field
     = f.label :slot
     = f.text_field :slot

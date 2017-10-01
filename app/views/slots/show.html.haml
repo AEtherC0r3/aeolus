@@ -10,6 +10,6 @@
   %b Climate control unit:
   = @slot.climate_control_unit
 
-= link_to 'Edit', edit_room_node_slot_path(@slot), class: 'btn btn-warning'
+= link_to 'Edit', edit_room_node_slot_path(@room, @node, @slot), class: 'btn btn-warning'
 \|
-= link_to 'Back', room_node_slots_path, class: 'btn btn-primary'
+= link_to 'Back', room_node_slots_path(@room, @node), class: 'btn btn-primary'

@@ -13,6 +13,6 @@
   %b Slot:
   = @climate_control_unit.slot
 
-= link_to 'Edit', edit_room_climate_control_unit_path(@climate_control_unit), class: 'btn btn-warning'
+= link_to 'Edit', edit_room_climate_control_unit_path(@room, @climate_control_unit), class: 'btn btn-warning'
 \|
-= link_to 'Back', room_climate_control_units_path, class: 'btn btn-primary'
+= link_to 'Back', room_climate_control_units_path(@room), class: 'btn btn-primary'
