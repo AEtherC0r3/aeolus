@@ -31,7 +31,7 @@
           - if voc_reading.try(:value) > 512
             = "Yes @ #{voc_reading.created_at}"
           - elsif voc_reading.try(:value) > 0
-            = "No @ #{voc_reading.created_at}t"
+            = "No @ #{voc_reading.created_at}"
           - else
             = 'N/A'
         %td

@@ -81,22 +81,22 @@ class Node < ApplicationRecord
       end
 
       if heating
-        climate_control_units.heating.each do |ccu|
-          slots[ccu.slot.kind] = 'on'
+        climate_control_units.heater.each do |ccu|
+          states[ccu.slot.kind] = 'on'
         end
       elsif cooling
-        climate_control_units.cooling.each do |ccu|
-          slots[ccu.slot.kind] = 'on'
+        climate_control_units.cooler.each do |ccu|
+          states[ccu.slot.kind] = 'on'
         end
       end
 
       if dehumidification
         climate_control_units.dehumidifier.each do |ccu|
-          slots[ccu.slot.kind] = 'on'
+          states[ccu.slot.kind] = 'on'
         end
       elsif humidification
         climate_control_units.humidification.each do |ccu|
-          slots[ccu.slot.kind] = 'on'
+          states[ccu.slot.kind] = 'on'
         end
       end
     end
